@@ -1,0 +1,85 @@
+// link z borderem i kolorem
+https://jsfiddle.net/sfLs56yd/4/
+
+//szachownica
+https://jsfiddle.net/gyv66xr8/9/
+
+//submenu
+http://codepen.io/anon/pen/jrKrQw
+
+//zadanie z kolumnami
+https://jsfiddle.net/kvtz6rxc/
+
+//zadanie z @extend
+.error{
+  width: 100px;
+  margin: 10px;
+  padding: 10px;
+  background-color: red;
+  border: 1px solid #f0f;
+}
+
+.seriousError{
+  @extend .error;
+  background-color:black;
+}
+
+.criticalError{
+  @extend .error;
+  background-color: green;
+}
+
+//operatory kolorow
+$base-color: #f0f;
+
+.div1{
+  background-color: $base-color;
+}
+
+.div{
+  background-color: grayscale($base-color);
+}
+
+//@if/ @else
+@mixin checkColor($color){
+  @if lightness($color) < 50%{
+    background-color: black;
+  }
+  @else{
+    background-color: red;
+  }
+}
+
+.test{
+  @include checkColor(#eee);
+}
+
+// GRID
+
+$grid-width: 960px;
+.column{
+  background: red;
+  border: 1px solid green;
+  float: left;
+}
+
+@mixin przyzywamGridaDesktop(){
+  @for $i from 1 to 13 {
+    .large-#{$i} {
+      @extend .column;
+      width: $grid-width/ 12;
+    }
+  }
+}
+
+@include przyzywamGridaDesktop();
+
+
+Do domu:
+http://flexboxfroggy.com/
+http://www.sassmeister.com/
+https://www.facebook.com/events/1766765486926111/
+
+Praca domowa: 
+1. dokonczenie http://codepen.io/anon/pen/jrKrQw
+2. pizza w scss :)
