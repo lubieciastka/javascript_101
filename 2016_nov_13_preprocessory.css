@@ -1,0 +1,97 @@
+http://bit.ly/2deZPeY
+
+
+ @for $i from 1 to 5 {
+     @for $j from 1 to 5 {
+      .large-#{$i}-#{$j} {
+        color: white;
+      }
+     }
+  }
+
+
+//strona html:
+
+<body>
+    <header>
+      <div class="row">
+        <div class="column small-2">
+          <img src="http://www.10puntos.com/wp-content/uploads/2011/06/ronald-macdonald-foto.jpg">
+        </div>
+        <div class="column small-8">
+          <nav>
+            <ul>
+              <li>czisburger</li>
+              <li>stripsy</li>
+              <li>late maczciato</li>
+            </ul>
+          </nav>
+        </div>
+        <div class="column small-2">
+          <select>
+            <option>polish</option>
+            <option>inglish</option>
+          </select>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="row">
+        <div class="column medium-2" style="background-color:#f0f">
+          test
+        </div>
+        <div class="column small-10 medium-8" style="background-color:#f00">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non tincidunt mi. Aenean lectus tortor, aliquam consectetur tempus nec, egestas ut nunc. Donec in justo elementum lacus rhoncus sollicitudin nec ac dui. Fusce condimentum dapibus quam, sit amet blandit nisl porttitor in. Sed eget mattis nunc, non consequat tellus. Nulla nibh dui, suscipit id condimentum tempus, pretium non velit. Proin in lacus et orci fringilla suscipit. Nunc blandit nunc eget feugiat fringilla. Duis eu pulvinar lectus, sit amet accumsan enim. Nunc urna dui, maximus sit amet eros non, egestas facilisis nisl.
+          </p>
+        </div>
+        <div class="column small-2 hide-for-large-only">aaccccaa</div>
+      </div>
+    </main>
+    <footer>
+      <div class="row">
+        <div class="column small-12 medium-3">Tekst</div>
+        <div class="column small-12 medium-3">Tekst</div>
+        <div class="column small-12 medium-3">Tekst</div>
+        <div class="column small-12 medium-3">Tekst</div>
+      </div>
+    </footer>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/what-input/what-input.js"></script>
+    <script src="bower_components/foundation-sites/dist/foundation.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+
+
+//app.scss
+
+
+header{
+	background-color: blue;
+	border-bottom: 2px solid green;
+	nav{
+		background-color: chartreuse;
+		border: 1px solid coral;
+		ul{
+			height: 50px;
+			li{
+				list-style: none;
+				float: left;
+				display: inline-block;
+				padding: 5px 10px;
+			}
+		}
+	}
+}
+
+main{
+	background-color: lightgray;
+}
+
+footer{
+	background-color: cyan;
+}
+
+  //w domu
+  https://www.coursera.org/learn/machine-learning
+  git clone https://github.com/zurb/foundation-sites-template projectname
