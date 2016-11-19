@@ -109,6 +109,64 @@ document.addEventListener("DOMContentLoaded", function(){
 	});
 });
 
+// zadanie 07 inputy - 06 - wersja "na jutro"
+document.addEventListener("DOMContentLoaded", function(){
+	var card = document.getElementById('card');
+	var form = document.querySelector('form');
+	var cardName = '';
+	var isValidated = '';
+
+	//Dodajemy eventy spradzajacy nazwe karty i walidacje
+	card.addEventListener('keyup', function(){
+		var inputValue = this.value;
+
+		if (inputValue.length < 1) {
+			console.log('za krotki string');
+		}
+
+		var _firstChar = inputValue[0];
+		var _secondChar = inputValue[1];
+		
+		cardName = '';
+		if (_firstChar === "4"){
+			cardName =  "Visa";
+		}
+
+		if (_firstChar === "5"){
+			cardName =  "Mastercard";
+		}
+
+		if (_firstChar === "3" && (_secondChar === "4" || _secondChar === "7")){
+			cardName =  "AmericanExpress";
+		}
+
+		//walidacja
+		var numberLength = this.value.length;
+		isValidated = false;
+		
+		if (cardName === "Visa" && ( numberLength >= 13 && numberLength <= 16)){
+			isValidated = true;
+		}
+
+		if (cardName === "Mastercard" && numberLength === 16){
+			isValidated = true;
+		}
+
+		if (cardName === "AmericanExpress" && numberLength === 15){
+			isValidated = true;
+		}
+
+		console.log(cardName, isValidated);
+	});
+
+	form.addEventListener('submit', function(event){
+		if(cardName === false || isValidated === false){
+			//niepozwalamy wyslac formularza
+			event.preventDefault();
+		}
+	});
+});
+
 // zadanie 07 inputy - 06
 document.addEventListener("DOMContentLoaded", function(){
 	var card = document.getElementById('card');
