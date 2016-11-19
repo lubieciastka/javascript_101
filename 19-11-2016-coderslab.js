@@ -173,3 +173,74 @@ document.addEventListener("DOMContentLoaded", function(){
 		}
 	});
 });
+
+// warsztat - zadanie 1
+document.addEventListener("DOMContentLoaded", function(){
+	var nextPicture = document.getElementById('nextPicture');
+	var prevPicture = document.getElementById('prevPicture');
+	var allImages = document.querySelectorAll('.slider li');
+	var counter = 0;
+	var currentElement = allImages[counter];
+
+	currentElement.classList.add('visible');
+
+	nextPicture.addEventListener('click', function(){
+		if (counter + 1 === allImages.length){
+			counter = -1;
+		}
+		currentElement.classList.remove('visible');
+		counter += 1;
+		currentElement = allImages[counter];
+		currentElement.classList.add('visible');
+	});
+
+	prevPicture.addEventListener('click', function(){
+		if (counter - 1 < 0){
+			counter = allImages.length;
+		}
+		currentElement.classList.remove('visible');
+		counter -= 1;
+		currentElement = allImages[counter];
+		currentElement.classList.add('visible');
+		console.log(counter);
+	});
+});
+
+
+// warsztat - zadanie 2
+/*
+ <div class="fullScreen">
+   <img src="./images/wrong.png">
+   <button class="close">Close</button>
+ </div>
+ */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+	var galleryElements = document.querySelectorAll('.gallery li');
+	var body = document.querySelector('body');
+
+	console.log(galleryElements, body);
+	
+	for (var i = 0; i < galleryElements.length; i++){
+		galleryElements[i].addEventListener('click', galleryElementClick);
+	}
+
+	function galleryElementClick (){
+		var newDiv = document.createElement('div');
+		newDiv.classList.add('fullScreen');
+
+		var newImg = document.createElement('img');
+		newImg.setAttribute('src', this.firstChild.getAttribute("src"));
+		
+		var newButton = document.createElement('button');
+		newButton.innerHTML = "Close";
+		newButton.classList.add('close');
+
+		newDiv.appendChild(newImg);
+		newDiv.appendChild(newButton);
+
+		body.appendChild(newDiv);
+		// console.log(newDiv);
+	}
+});
