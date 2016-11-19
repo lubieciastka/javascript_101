@@ -206,7 +206,6 @@ document.addEventListener("DOMContentLoaded", function(){
 	});
 });
 
-
 // warsztat - zadanie 2
 /*
  <div class="fullScreen">
@@ -242,5 +241,84 @@ document.addEventListener("DOMContentLoaded", function(){
 
 		body.appendChild(newDiv);
 		// console.log(newDiv);
+	}
+});
+
+// warsztat - zadanie 3
+document.addEventListener("DOMContentLoaded", function(){
+	var galleryImages = document.querySelectorAll('#gallery img');
+	var showButton = document.getElementById('showButton');
+	var hideButton = document.getElementById('hideButton');
+	var tagInput = document.getElementById('tagInput');
+	var tagValue = '';
+
+	//console.log(galleryImages, showButton, hideButton, tagInput);
+
+	showButton.addEventListener('click', function(){
+		getTagValueAndClear();
+
+		for( var i = 0; i < galleryImages.length; i++){
+			if(galleryImages[i].dataset.tag.indexOf(tagValue) >= 0){
+				galleryImages[i].classList.remove('invisible');
+			}
+		}
+	});
+
+	hideButton.addEventListener('click', function(){
+		getTagValueAndClear();
+
+		for( var i = 0; i < galleryImages.length; i++){
+			if(galleryImages[i].dataset.tag.indexOf(tagValue) >= 0){
+				galleryImages[i].classList.add('invisible');
+			}
+		}
+	});
+
+	function getTagValueAndClear() {
+		tagValue = tagInput.value;
+		tagInput.value = '';
+	}
+});
+
+//warsztat - zadanie 3 - z callbackami
+
+document.addEventListener("DOMContentLoaded", function(){
+	var galleryImages = document.querySelectorAll('#gallery img');
+	var showButton = document.getElementById('showButton');
+	var hideButton = document.getElementById('hideButton');
+	var tagInput = document.getElementById('tagInput');
+	var tagValue = '';
+
+	//console.log(galleryImages, showButton, hideButton, tagInput);
+
+	showButton.addEventListener('click', function(){
+		getTagValueAndClear();
+		applyTag(showElement);
+	});
+
+	hideButton.addEventListener('click', function(){
+		getTagValueAndClear();
+		applyTag(hideElement);
+	});
+
+	function applyTag(_callback){
+		for( var i = 0; i < galleryImages.length; i++){
+			if(galleryImages[i].dataset.tag.indexOf(tagValue) >= 0){
+				_callback(galleryImages[i]);
+			}
+		}
+	}
+
+	function hideElement(element){
+		element.classList.add('invisible');
+	}
+
+	function showElement(element){
+		element.classList.remove('invisible');
+	}
+
+	function getTagValueAndClear() {
+		tagValue = tagInput.value;
+		tagInput.value = '';
 	}
 });
