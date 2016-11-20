@@ -126,9 +126,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 //// saper
-
 document.addEventListener("DOMContentLoaded", function(){
 	var generate = document.getElementById('generate');
+	var saper = document.getElementById('saper');
 	var saperArray = [];
 
 	generate.addEventListener('click', generateSaperArray);
@@ -138,12 +138,28 @@ document.addEventListener("DOMContentLoaded", function(){
 			var tempArray = [];
 
 			for (var j = 0; j < 10; j++){
-				tempArray.push(j);
+				tempArray.push(i + " " + j);
 			}
 
 			saperArray.push(tempArray);
 		}
 
-		console.log(saperArray);
+		generateSaperTable();
+	}
+
+	function generateSaperTable () {
+		var _table = document.createElement('table');
+
+		for ( var i = 0; i < 10; i++ ){
+			var _tr = document.createElement('tr');
+
+			for (var j = 0; j < 10; j++){
+				var _td = document.createElement('td');
+				_td.innerHTML = saperArray[i][j];
+				_tr.appendChild(_td);
+			}
+			_table.appendChild(_tr);
+		}
+		saper.appendChild(_table);
 	}
 });
