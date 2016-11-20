@@ -62,13 +62,22 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 //warsztat 06 - todolist
-
 document.addEventListener("DOMContentLoaded", function(){
 	var taskList = document.getElementById('taskList');
 	var addTaskButton = document.getElementById('addTaskButton');
 	var taskInput = document.getElementById('taskInput');
+	var removeFinishedTasksButton = document.getElementById('removeFinishedTasksButton');
 
 	addTaskButton.addEventListener('click', addTask);
+	removeFinishedTasksButton.addEventListener('click', removeFinished);
+
+	function removeFinished () {
+		var elementsToRemove = document.querySelectorAll('.done');
+		
+		for( var i = 0; i < elementsToRemove.length; i++){
+			elementsToRemove[i].parentElement.removeChild(elementsToRemove[i]);
+		}
+	}
 
 	function addTask () {
 		var newTask = document.createElement('li');
@@ -86,9 +95,14 @@ document.addEventListener("DOMContentLoaded", function(){
 		taskList.appendChild(newTask);
 
 		buttonComplete.addEventListener('click', onButtonComplete);
+		buttonDelete.addEventListener('click', onButtonDelete);
 	}
 
 	function onButtonComplete () {
 		this.parentElement.classList.toggle('done');
+	}
+
+	function onButtonDelete () {
+		this.parentElement.parentElement.removeChild(this.parentElement);
 	}
 });
