@@ -138,7 +138,8 @@ document.addEventListener("DOMContentLoaded", function(){
 			var tempArray = [];
 
 			for (var j = 0; j < 10; j++){
-				tempArray.push(i + " " + j);
+				var tempValue = Math.random() * 100 < 20;
+				tempArray.push(tempValue ? 1 : 0);
 			}
 
 			saperArray.push(tempArray);
@@ -163,3 +164,14 @@ document.addEventListener("DOMContentLoaded", function(){
 		saper.appendChild(_table);
 	}
 });
+
+//Kolejne kroki dla Sapera:
+// Nie wyswietla sie zero/ jeden tylko kafelek (div/ albo td) - pamietajac o CSS'ach (szary z efektem emboss)
+// dla kafelka dodajemy event click - rozrozniajac czy to jest lewy click czy prawy click
+// lewy click - sprawdzamy czy klikniety kafelek byl mina czy nie - jezeli jest mina - przerywamy gre - jezeli nie byl mina to sprawdzamy czy obok sa miny i odkrywamy puste kafelki i pokazujemy ile min jest do okola
+// prawy click - oznaczamy jako mina
+// dodatkowo - musi byc funckja ktora sprawdza czy zostawilismy tylko miny ( kiedy ma byc wywolywana ?)
+// ladne style
+// animacje CSS'owe
+// mozliwosc restartu gry
+// mozliwosc wyboru wielkosci planszy
