@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	var addTaskButton = document.getElementById('addTaskButton');
 	var taskInput = document.getElementById('taskInput');
 	var removeFinishedTasksButton = document.getElementById('removeFinishedTasksButton');
+	var counter = document.getElementById('counter');
 
 	addTaskButton.addEventListener('click', addTask);
 	removeFinishedTasksButton.addEventListener('click', removeFinished);
@@ -80,6 +81,11 @@ document.addEventListener("DOMContentLoaded", function(){
 	}
 
 	function addTask () {
+		if (taskInput.value.length <= 5 || taskInput.value.length >= 100){
+			console.log('za malo lub za duzo');
+			return;
+		}
+
 		var newTask = document.createElement('li');
 		var h1 = document.createElement('h1');
 		var buttonDelete = document.createElement('button');
@@ -94,15 +100,26 @@ document.addEventListener("DOMContentLoaded", function(){
 		newTask.appendChild(buttonComplete);
 		taskList.appendChild(newTask);
 
+		taskInput.value = '';
+
 		buttonComplete.addEventListener('click', onButtonComplete);
 		buttonDelete.addEventListener('click', onButtonDelete);
+
+		findDone();
 	}
 
 	function onButtonComplete () {
 		this.parentElement.classList.toggle('done');
+		findDone();
 	}
 
 	function onButtonDelete () {
 		this.parentElement.parentElement.removeChild(this.parentElement);
+		findDone();
+	}
+
+	function findDone () {
+		var notDone = document.querySelectorAll('li:not(.done)');
+		counter.innerHTML = notDone.length;
 	}
 });
