@@ -123,3 +123,27 @@ document.addEventListener("DOMContentLoaded", function(){
 		counter.innerHTML = notDone.length;
 	}
 });
+
+
+//// saper
+
+document.addEventListener("DOMContentLoaded", function(){
+	var generate = document.getElementById('generate');
+	var saperArray = [];
+
+	generate.addEventListener('click', generateSaperArray);
+
+	function generateSaperArray () {
+		for ( var i = 0; i < 10; i++ ){
+			var tempArray = [];
+
+			for (var j = 0; j < 10; j++){
+				tempArray.push(j);
+			}
+
+			saperArray.push(tempArray);
+		}
+
+		console.log(saperArray);
+	}
+});
